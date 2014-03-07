@@ -1,0 +1,17 @@
+{
+    "port": 7000,
+    "globals" : {
+        "skip_elastic_search": true
+    },
+    "db":{
+
+    },
+    "memcached": {
+        "host"       : "localhost",
+        "options"   : {}
+    },
+    "rabbit":{
+        "host": "localhost",
+        "post" : 5672
+    }
+}
