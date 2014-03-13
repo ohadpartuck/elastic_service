@@ -8,7 +8,7 @@ var rabbit              = require(GLOBAL.ROOT + '/lib/rabbit_client/rabbit_clien
 //Update a question
 
 exports.create = function(req, res){
-    Elastic.create(req, function(final_result) {
+    Elastic.index(req, function(final_result) {
         res.json({'result' :  final_result});
     });
 };
@@ -26,9 +26,9 @@ exports.delete = function(req, res){
 };
 
 exports.show = function(req, res){
-//    questions.list_top_rated(req, function(final_result) {
-    res.json({'result' :  'I am show - whoohoo!'});
-//    });
+    Elastic.search(req, function(final_result) {
+        res.json({'result' : final_result});
+    });
 };
 
 
