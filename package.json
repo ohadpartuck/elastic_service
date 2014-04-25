@@ -1,5 +1,5 @@
 {
-  "name": "Daat_Searcher",
+  "name": "Elastic_Searcher",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -17,9 +17,9 @@
   ],
   "dependencies": {
     "express": "3.4.8",
-    "amqp": "~0.1.8",
     "express-namespace": "~0.1.1",
-    "elasticsearch": "~1.5.11"
+    "elasticsearch": "~1.5.11",
+    "socket.io": "^0.9.16"
   },
   "devDependencies": {
     "express-debug": "~1.0.3"
