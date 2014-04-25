@@ -1,7 +1,7 @@
 module.exports = function(app, env, express){
 
     var config                 = require('../configuration/' + env + '.json');
-    var client                 = require('./elastic_search_setup')(app, config);
+    var client                 = require('./elastic_client_setup')(app, config);
 
 
     app.set('views', GLOBAL.ROOT + '/views');

@@ -1,5 +1,5 @@
 //TODO - here should be stubbed/real by configuration
-var Elastic             = require(GLOBAL.ROOT + '/lib/elastic_search/elastic_search.js');
+var Daat             = require(GLOBAL.ROOT + '/lib/daat/daat.js');
 
 //NEW Question
 //Get Question by ID
@@ -9,7 +9,7 @@ var Elastic             = require(GLOBAL.ROOT + '/lib/elastic_search/elastic_sea
 module.exports = function(app){
     app.namespace('/v1', function(){
         app.get('/show', function(req, res){
-            Elastic.index(req, function(final_result) {
+            Daat.index(req, function(final_result) {
                 res.json({'result' :  final_result});
             });
         });
@@ -17,7 +17,7 @@ module.exports = function(app){
             res.json({'result' :  'I am update - updating ...   !'});
         });
         app.post('/create', function(req, res){
-            Elastic.search(req, function(final_result) {
+            Daat.search(req, function(final_result) {
                 res.json({'result' : final_result});
             });
         });
