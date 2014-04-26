@@ -6,8 +6,8 @@ module.exports = function (app) {
 
             //get all products / a specific product
             app.get('/', function (req, res) {
-                var results = sanger.get(app, req);
-                res.json({"result": results});
+                sanger.get(req, get_callback);
+                res.json({"result": 'sent to search, we\'ll call you right back.'});
             });
 
             app.put('/new', function (req, res) {
@@ -21,4 +21,9 @@ module.exports = function (app) {
 function create_callback(result){
     //send back to products_service
 
+}
+
+function get_callback(results){
+   //send back to products_service
+    console.log('results from elastic search' + results);
 }

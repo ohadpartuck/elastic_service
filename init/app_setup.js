@@ -21,4 +21,6 @@ module.exports = function(app, env, express){
     if ('development' == app.get('env')) {
         app.use(express.errorHandler());
     }
+
+    GLOBAL.ELASTIC_CLIENT             = client;
 };
