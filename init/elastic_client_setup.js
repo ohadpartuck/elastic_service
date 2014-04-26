@@ -1,10 +1,9 @@
 module.exports = function(app, config){
+    var elasticsearch = require('es'),
+        config =    {"hosts": [config.elastic_search.conf['host']]};
 
+    return elasticsearch(config);
 
-    var sage = require('sage'),
-        es = sage(config.elastic_search.conf['host']);
-
-    return es;
 
 //    var elastic_search      = require('elasticsearch'),
 //        client              = new elastic_search.Client(config.elastic_search.conf);
