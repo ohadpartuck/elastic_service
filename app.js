@@ -9,8 +9,8 @@ var express             = require('express'),
     http                = require('http'),
     app                 = express();
 
-http.createServer(app).listen(9001, function(){
-    console.log('Express server on port 9001 Ready to Rock!');
+http.createServer(app).listen(9003, function(){
+    console.log('Express server on port 9003 Ready to Rock!');
 });
 
 require('./init/app_setup')(app, env, express);
