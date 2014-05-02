@@ -6,8 +6,9 @@ module.exports = function (app) {
 
             //get all products / a specific product
             app.get('/', function (req, res) {
-                sanger.get(req, get_callback);
-                res.json({"result": 'sent to search, we\'ll call you right back.'});
+                //Sync, maybe will be better to do async
+                sanger.get(req, res);
+//                res.json({"result": 'sent to search, we\'ll call you right back.'});
             });
 
             app.put('/new', function (req, res) {
@@ -17,6 +18,7 @@ module.exports = function (app) {
         });
     });
 };
+
 
 function create_callback(result){
     //send back to products_service
