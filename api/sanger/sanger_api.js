@@ -11,8 +11,18 @@ module.exports = function (app) {
 //                res.json({"result": 'sent to search, we\'ll call you right back.'});
             });
 
-            app.put('/new', function (req, res) {
-                sanger.create(app, req, create_callback);
+            app.put('/', function (req, res) {
+                sanger.create(req, create_callback);
+                res.json({"result": 'sent to be indexed. we\'ll update once its done'});
+            });
+
+            app.post('/:id', function (req, res) {
+                sanger.create(req, create_callback);
+                res.json({"result": 'sent to be indexed. we\'ll update once its done'});
+            });
+
+            app.delete('/', function (req, res) {
+                sanger.create(req, create_callback);
                 res.json({"result": 'sent to be indexed. we\'ll update once its done'});
             });
         });
@@ -22,10 +32,10 @@ module.exports = function (app) {
 
 function create_callback(result){
     //send back to products_service
-
+    console.log('create results from elastic search' + JSON.stringify(result));
 }
 
 function get_callback(results){
    //send back to products_service
-    console.log('results from elastic search' + results);
+    console.log('get_callback results from elastic search' + JSON.stringify(results));
 }
