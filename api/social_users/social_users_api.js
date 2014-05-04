@@ -1,4 +1,4 @@
-var facebook = require(GLOBAL.ROOT + '/lib/facebook/facebook.js');
+var facebook = require(ROOT + '/lib/facebook/facebook.js');
 
 module.exports = function (app) {
     app.namespace('/v1', function(){

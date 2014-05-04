@@ -1,5 +1,5 @@
 //TODO - here should be stubbed/real by configuration
-var Daat             = require(GLOBAL.ROOT + '/lib/daat/daat.js');
+var Daat             = require(ROOT + '/lib/daat/daat.js');
 
 //NEW Question
 //Get Question by ID

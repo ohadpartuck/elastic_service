@@ -12,30 +12,38 @@ module.exports = function (app) {
             });
 
             app.put('/', function (req, res) {
-                sanger.create(req, create_callback);
+                sanger.create(req, createCallback);
                 res.json({"result": 'sent to be indexed. we\'ll update once its done'});
             });
 
             app.post('/:id', function (req, res) {
-                sanger.create(req, create_callback);
+                sanger.update(req, updateCallback);
                 res.json({"result": 'sent to be indexed. we\'ll update once its done'});
             });
 
             app.delete('/', function (req, res) {
-                sanger.create(req, create_callback);
-                res.json({"result": 'sent to be indexed. we\'ll update once its done'});
+                sanger.delete(req, deleteCallback);
+                res.json({"result": 'sent to be deleted. we\'ll update once its done'});
             });
         });
     });
 };
 
 
-function create_callback(result){
-    //send back to products_service
-    console.log('create results from elastic search' + JSON.stringify(result));
+function createCallback(result){
+    crudCallback('create', result);
 }
 
-function get_callback(results){
-   //send back to products_service
-    console.log('get_callback results from elastic search' + JSON.stringify(results));
+function updateCallback(result){
+    crudCallback('update', result);
 }
+
+function deleteCallback(result){
+    crudCallback('delete', result);
+}
+
+function crudCallback(action , result){
+    //send back to products_service
+    console.log(action + ' action results from elastic search' + JSON.stringify(result));
+}
+
