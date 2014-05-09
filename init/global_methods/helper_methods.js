@@ -1,7 +1,9 @@
-gatherInput = function (req, whereToSearch){
-    var doc     = req.body[sangerConstants['product_data']],
-        bson_id = req.body[mainConstants['bson_id']];
-    var options = extend(whereToSearch, {_id: bson_id});
+var extend              = require('util')._extend;
+
+gatherInput = function (req, whereToSearch, inputDataField){
+    var doc     = req.body[inputDataField],
+        bson_id = req.body[MAIN['bson_id']];
+        var options = extend(whereToSearch, {_id: bson_id});
 
     return {options: options, doc: doc};
 };

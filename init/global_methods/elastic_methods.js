@@ -17,8 +17,8 @@ genericSearch = function(req, callback, whatToSearch, whereToSearch){
     });
 };
 
-genericElasticCreate = function(req, callback, whereToSearch){
-    var input = gatherInput(req, whereToSearch);
+genericElasticCreate = function(req, callback, whereToSearch, inputDataField){
+    var input = gatherInput(req, whereToSearch, inputDataField);
 
     elastic_client.index(input['options'], input['doc'], function (err, resp) {
         elasticCrudCallback(err, resp, callback);
@@ -26,7 +26,7 @@ genericElasticCreate = function(req, callback, whereToSearch){
 };
 
 genericElasticUpdate = function(req, callback, whereToSearch){
-    var input = gatherInput(req, whereToSearch);
+    var input = gatherInput(req, whereToSearch, inputDataField);
 
     elastic_client.update(input['options'], {doc: input['doc']}, function (err, resp) {
         elasticCrudCallback(err, resp, callback);

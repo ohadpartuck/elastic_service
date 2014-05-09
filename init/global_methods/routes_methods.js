@@ -1,8 +1,8 @@
 setupDefaultRoutes = function(app, appLib){
     var get         = appLib.get;
-    var put         = appLib.get;
-    var update      = appLib.get;
-    var deleteItem  = appLib.get;
+    var put         = appLib.create;
+    var update      = appLib.update;
+    var deleteItem  = appLib.delete;
 
     app.get('/', function (req, res) {
         //Sync, maybe will be better to do async
