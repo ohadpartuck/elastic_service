@@ -17,6 +17,7 @@ genericSearch = function(req, callback, whatToSearch, whereToSearch){
     });
 };
 
+
 genericElasticCreate = function(req, callback, whereToSearch, inputDataField){
     var input = gatherInput(req, whereToSearch, inputDataField);
 
