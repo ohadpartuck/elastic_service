@@ -14,5 +14,6 @@ http.createServer(app).listen(9003, function(){
 });
 
 require('./init/app_setup')(app, env, express);
+require('./init/global_methods/global_methods');
 require('./init/routes_setup')(app);
 
