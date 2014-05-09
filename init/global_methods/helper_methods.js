@@ -11,7 +11,7 @@ gatherInput = function (req, whereToSearch, inputDataField){
 //todo - build more complicated queries here. fuzzy search, match search, regex search.
 buildQuery = function(req){
     var searchObj  = req.query;
-    var searchTerm = queryObjectToElasticSearchTerm(req.query);
+    var searchTerm = queryObjectToElasticSearchTerm(searchObj);
 
     if (searchTerm === undefined) return { match_all : {} };
 
@@ -19,7 +19,7 @@ buildQuery = function(req){
         case MAIN['start_with_search_type']:
             return startWithQuery(searchObj);
         case MAIN['regex_search_type']:
-            return startWithQuery(searchObj);
+            return regexQuery(searchObj);
         default:
             return buildRegularQuery(searchTerm);
     }
@@ -50,14 +50,26 @@ function buildRegularQuery(searchTerm){
 }
 
 function startWithQuery(searchObj){
-    var start_with_field    = searchObj[MAIN['start_with_field']],
+    var starts_with_field   = searchObj[MAIN['starts_with_field']],
         starts_with         = searchObj[MAIN['starts_with']],
         max_expansions      = searchObj[MAIN['max_expansions']];
 
     var query = {};
-    query[start_with_field] = {
+    query[starts_with_field] = {
         query: starts_with,
         max_expansions: max_expansions
     };
+
      return {match_phrase_prefix: query};
+}
+
+function regexQuery(searchObj){
+    var regex_field         = searchObj[MAIN['regex_field']],
+        regex_term          = searchObj[MAIN['regex_term']];
+
+    var query = {};
+    query[regex_field] = '.*' + regex_term + '.*';
+    //query={ "regexp":{"name": "t.*"}}
+
+    return {query: {regexp: query }};
 }
