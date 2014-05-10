@@ -68,8 +68,9 @@ function regexQuery(searchObj){
         regex_term          = searchObj[MAIN['regex_term']];
 
     var query = {};
+    //TODO- check if this is optimal
     query[regex_field] = '.*' + regex_term + '.*';
-    //query={ "regexp":{"name": "t.*"}}
 
-    return {query: {regexp: query }};
+    return {regexp: query };
+    //example: {query: { "regexp":{"name": "t.*"}}}
 }

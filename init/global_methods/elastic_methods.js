@@ -10,7 +10,7 @@ genericSearch = function(req, callback, whatToSearch, whereToSearch){
     }, function (err, data) {
         if (err || data === undefined){
             console.log(err);
-            callback.json([])
+            callback.json(err)
         }else{
             callback.json(data['hits'].hits);
         }
